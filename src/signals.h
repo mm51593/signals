@@ -18,31 +18,11 @@ static const int priority[SIGNAL_COUNT] = { PRIO_1, PRIO_2, PRIO_3, PRIO_4 };
 
 /* Gets priority of signal sig.
  * If sig isn't in priority list, returns -1. */
-int get_priority(int sig) {
-	int res = -1;
+int get_priority(int sig);
 
-	for (int i = 0; i < SIGNAL_COUNT; i++) {
-		if (priority[i] == sig) {
-			res = i;
-			break;
-		}
-	}
-
-	return res;
-}
-
-#define HANDLER(prio) \
-	void handle_signal_ ## prio() { \
-			for (int i = 0; i < SLEEP_TIME; i++) { \
-			printf("Handling signal %d\n", prio); \
-			sleep(1);\
-		} \
-		printf("Done with signal %d\n", prio);\
-	} 
-
-HANDLER(1)
-HANDLER(2)
-HANDLER(3)
-HANDLER(4)
+void handle_signal_1();
+void handle_signal_2();
+void handle_signal_3();
+void handle_signal_4();
 
 #endif // !SIGNALS_H

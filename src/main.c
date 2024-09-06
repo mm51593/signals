@@ -1,4 +1,5 @@
-#include "handlers/handlers.h"
+#include "handlers/ideal_handler.h"
+#include "handlers/unsupported_handler.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,25 +23,26 @@ void print_pid() {
 	printf("PID: %d\n", pid);
 }
 
+void run_by_choice(int choice) {
+	switch (choice) {
+		case 1:
+			run_ideal();
+			break;
+		case 2:
+			run_unsupported();
+			break;
+		default:
+			fprintf(stderr, "Invalid choice\n");
+			exit(EXIT_FAILURE);
+	}
+}
+
+
 int main(int argc, char *argv[])
 {
 	print_pid();
 	int arg = get_arg(argc, argv);
-
-	switch (arg) {
-		case 1:
-			if (setup_ideal()) {
-				fprintf(stderr, "Setup error\n");
-			}	
-			break;
-		default:
-			fprintf(stderr, "Invalid arg: %d\n", arg);
-			exit(EXIT_FAILURE);	
-	}
-
-	while (1) {
-		sleep(1);
-	}
+	run_by_choice(arg);
 
 	return EXIT_SUCCESS;
 }

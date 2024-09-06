@@ -1,7 +1,8 @@
-#include "handlers.h"
+#include "ideal_handler.h"
 #include "src/signals.h"
 
 #include <signal.h>
+#include <unistd.h>
 
 int setup_ideal() {
 	int ret = 0;
@@ -30,4 +31,14 @@ int setup_ideal() {
 	ret |= sigaction(PRIO_4, &act, NULL);	// set trap
 	
 	return ret;
+}
+
+void loop_ideal() {
+	while (1)
+		sleep(1);
+}
+
+void run_ideal() {
+	setup_ideal();
+	loop_ideal();
 }
