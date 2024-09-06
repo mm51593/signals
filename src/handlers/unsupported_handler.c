@@ -8,7 +8,7 @@
 static int interrupts[SIGNAL_COUNT] = {0, 0, 0, 0};
 static void (*handlers[SIGNAL_COUNT])() = {handle_signal_1, handle_signal_2, handle_signal_3, handle_signal_4};
 
-void process_next() {
+static void process_next() {
 	for (int i = SIGNAL_COUNT - 1; i >= 0; i--) {
 		if (interrupts[i]) {
 			printf("Accepting interrupt %d\n", i + 1); \
@@ -21,7 +21,7 @@ void process_next() {
 }
 
 #define REGISTER(prio) \
-	void register_signal_ ## prio() { \
+	static void register_signal_ ## prio() { \
 		interrupts[prio - 1] = 1; \
 }
 

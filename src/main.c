@@ -1,5 +1,6 @@
 #include "handlers/ideal_handler.h"
 #include "handlers/unsupported_handler.h"
+#include "handlers/soft_supported_handler.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,6 +31,9 @@ void run_by_choice(int choice) {
 			break;
 		case 2:
 			run_unsupported();
+			break;
+		case 3:
+			run_soft_supported();
 			break;
 		default:
 			fprintf(stderr, "Invalid choice\n");
