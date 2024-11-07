@@ -9,6 +9,7 @@
 
 #define SIGNAL_COUNT 4
 
+#define STARTING_PRIO	0
 #define PRIO_1 SIGWINCH
 #define PRIO_2 SIGINFO
 #define PRIO_3 SIGUSR1

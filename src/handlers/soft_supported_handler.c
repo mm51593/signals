@@ -3,8 +3,6 @@
 
 #include <signal.h>
 #include <stdio.h>
-#include <sys/_types/_null.h>
-#include <sys/signal.h>
 #include <unistd.h>
 
 #define REGISTER(prio) \
